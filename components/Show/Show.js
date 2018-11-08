@@ -8,7 +8,6 @@ export default class Show extends Component{
     static navigationOptions = {
         title: 'Login',
             header : null ,
-
     }
     
     constructor(props) {
@@ -20,8 +19,6 @@ export default class Show extends Component{
             totalNodeNumber: parseInt( navigation.getParam('totalNodeNumber',0)),
             isAuthenticated: navigation.getParam('isAuthenticated',NaN),
             uid: navigation.getParam('uid',NaN) ,
-            email:navigation.getParam('email',NaN) ,
-            password:navigation.getParam('password',NaN) ,
         }
         const {
             Circle ,
@@ -111,7 +108,7 @@ export default class Show extends Component{
         let numberNodeRing = this.calculNumberNodeRing(this.state.totalNodeNumber ,ringNumber);
         let numberClusterRing  = this.calculNumberClusterRing(numberNodeRing , ringNumber,this.state.raduis)
         let raduisCluster = this.calculRaduisCluster(ringWidth,numberClusterRing,ringNumber);
-        console.log(this.state.uid)
+        console.log("show uid = "+this.state.uid)
         return(
             <View
                 style ={{
@@ -124,7 +121,6 @@ export default class Show extends Component{
                 }}
                 >
                     <ShowCircle  />
-                    <ShowNodes raduis={this.state.raduis} uid={this.state.uid} />
                     <SectionList
                         sections={[
                         {title: 'number of rings' , data: [ringNumber] },

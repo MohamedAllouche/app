@@ -1,13 +1,12 @@
 import React from 'react';
 import { View, Text,Button ,TextInput } from 'react-native';
 import firebase from 'react-native-firebase';
-import GuestLogin from './GuestLogin';
+
 export default class EmailLogin extends React.Component {
     static navigationOptions = {
-        title: 'emailLogin',
+        title: 'Login',
         header : null ,
 }
-    
     constructor(props) {
         super(props);        
         this.state = {
@@ -17,7 +16,7 @@ export default class EmailLogin extends React.Component {
           password:NaN,
         };
       }
-
+      
     onSignIn = () => {
         const {navigate} = this.props.navigation;
           if (this.state.email && this.state.password){
@@ -26,11 +25,14 @@ export default class EmailLogin extends React.Component {
                 if (user) {
                     this.state = {
                         isAuthenticated: true,
-                        uid: firebase.auth().currentUser ,
+                        uid: user.uid ,
 
                       };
+                      console.log("Signed In with uid :"+user.uid   );
+                      navigate('Show',{uid: this.state.uid , email:this.state.email , 
+                        password: this.state.password , isAuthenticated: this.state.isAuthenticated});
+
                 }           
-                navigate('Show')
 
             }
         ))
@@ -41,7 +43,6 @@ export default class EmailLogin extends React.Component {
     }
             
     }
-    
     onSignUp = () => {
         if (this.state.email && this.state.password){
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -52,7 +53,8 @@ export default class EmailLogin extends React.Component {
             alert(`${error}`)
         });
 
-    }}
+    }
+    }
     onGuest = () => {
         const {navigate} = this.props.navigation;
         firebase.auth().signInAnonymously()
@@ -60,13 +62,13 @@ export default class EmailLogin extends React.Component {
             isAuthenticated: true,
             uid: firebase.auth().currentUser ,
         };
-            
+        console.log("signed In as a Guest");
         navigate('MainForm',{uid: this.state.uid , email:this.state.email , 
             password: this.state.password , isAuthenticated: this.state.isAuthenticated});
     }
 
-    
     render() {
+        console.log("login.js props:")
           return(
             <View style={{
                   flex: 1,

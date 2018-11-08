@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text,Button ,TextInput } from 'react-native';
+import { View,Button } from 'react-native';
 import firebase from 'react-native-firebase';
 
 export default class GuestLogin extends React.Component {
@@ -31,11 +31,15 @@ export default class GuestLogin extends React.Component {
 
       render(){
         return (
-          <Button         
-          style={{
-            padding: 20 ,
-        }}
-            onPress={this.onSign}
-            title='Use a Guest Session' /> )
+            <View>
+                <Button         
+                style={{
+                    padding: 20 ,
+                }}
+                    onPress={this.onSign}
+                    title='Use a Guest Session' />
+                    </View>
+            )
+
       }
 }
