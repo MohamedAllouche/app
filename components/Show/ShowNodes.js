@@ -16,16 +16,20 @@ export default class ShowNodes extends Component{
     
     constructor(props){
         super(props);
+        const { navigation } = this.props;
+
         this.state={
             
             xx: [-14.21, 9.42, -21.11, 3.6480, 7.9563, 16.0716, 4.0713, -21.1073, -5.2415, 17.3118, -2.4734, 0.8327, 16.051, 24.2294, -1.6405, -9.3108, 23.6038, 8.3883, -15.0276, -8.4300, -4.1778, 12.3042, -16.0377, -15.0739, -2.6780],
             yy: [-7.798, 16.81, 3.5047, -6.9879, 8.8899, 5.6568, -11.2943, -4.3504, -21.3337, 8.9538, 20.8694, -15.1026, -13.61, 2.1141, -12.2806, 18.4465, 5.9317, 19.0039, 0.1937, 13.6610, -14.4063, -0.3495, -4.1770, 6.8654, 14.6456],
             print: [],
             raduis: this.props.raduis ,
-            uid: this.props.uid ,
+            isAuthenticated: navigation.getParam('isAuthenticated',NaN),
+            uid: navigation.getParam('uid',NaN) , 
             nodeNumber: 0 ,
             childRef:parentRef.child(this.state.uid),
          }
+         console.log("show node uid : " + this.state.uid);
     }
 
 

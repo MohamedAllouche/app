@@ -14,10 +14,7 @@ export default class MainForm extends Component{
             raduis: 0,
             totalNodeNumber: 0 ,
             isAuthenticated: navigation.getParam('isAuthenticated',NaN),
-            uid: navigation.getParam('uid',NaN) ,
-            email:navigation.getParam('email',NaN) ,
-            password:navigation.getParam('password',NaN) ,
-        
+            uid: navigation.getParam('uid',NaN) ,        
         };
     }
 

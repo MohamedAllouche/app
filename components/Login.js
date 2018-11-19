@@ -123,6 +123,7 @@ export default class EmailLogin extends React.Component {
                         height: 40,
                         width: 200,
                         margin: 10,
+                        paddingVertical: 20,
                 }}
                         onPress={this.onSignIn}
                     title='SignIn' />

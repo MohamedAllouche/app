@@ -1,9 +1,7 @@
 import React , {Component} from 'react';
 import {ART ,StyleSheet,Text,SectionList, View, ScrollView} from 'react-native';
-import ShowCircle from './ShowCircle';
+import ShowCircl;:e from './ShowCircle';
 import ShowNodes from './ShowNodes';
-import ShowDetails from './ShowDetails';
-
 export default class Show extends Component{
     static navigationOptions = {
         title: 'Login',
@@ -54,7 +52,7 @@ export default class Show extends Component{
     //Number of Node per Ring
     calculNumberNodeRing = ( totalNodeNumber , ringNumber ) => {
 
-        var num = [0];
+        var num = [];
         for (i=1;i<= ringNumber; i++ ){
             num.push((2*i -1)*totalNodeNumber/ringNumber/ringNumber)
         }        
@@ -70,7 +68,7 @@ export default class Show extends Component{
 
 // Optimal Number of Cluster in a Ring
     calculNumberClusterRing = (num ,ringNumber, raduis) => {
-        var mOpt = [0];
+        var mOpt = [];
         mOpt.push((
             Math.sqrt(num[1]/2/1757.8125)*raduis
         ));
@@ -86,7 +84,7 @@ export default class Show extends Component{
     }
 // Optimal Raduis of Cluster in a Ring
     calculRaduisCluster = (ringWidth , mOpt,ringNumber) =>{
-        var rOpt = [0];
+        var rOpt = [];
         rOpt.push(ringWidth*Math.sqrt(3/mOpt[1]));
         for(i=2 ;i<= ringNumber ; i++)
         rOpt.push((Math.sqrt(
@@ -129,7 +127,7 @@ export default class Show extends Component{
                         {title: 'Optimal Number of Cluster in a Ring' , data: numberClusterRing},
                         {title: 'Optimal Raduis of Cluster in a Ring' , data: raduisCluster},
                         ]}
-                        renderItem={({item , index}) => <Text style={styles.item}>{index} {item}</Text>}
+                        renderItem={({item , index}) => <Text style={styles.item}>+{item}</Text>}
                         renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
                         keyExtractor={(item, index) => index}
                     />                
